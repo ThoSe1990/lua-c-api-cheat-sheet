@@ -6,8 +6,8 @@ If you're writing own Lua bindings, this can be helpful. A Lua C API cheat sheet
 2. Running a Lua script from string
 3. Access to variables
 4. Passing variables to Lua
-5. Access Lua function
-6. Calling C function from Lua
+5. Access a Lua function
+6. Calling a C function from Lua
 7. Access structs in Lua (creating userdata)
 8. Reading a Lua table in C
 9. Reading a Lua array in C
