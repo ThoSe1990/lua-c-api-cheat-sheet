@@ -1,6 +1,6 @@
 # LUA C API Cheat Sheet
 
-If you're writing own Lua bindings, this can be helpful. A Lua C API cheat sheet with 11 examples
+If you're writing own Lua bindings, this can be helpful. A Lua C API cheat sheet with 11 examples. You can find my Blog article about those examples [here](https://www.codingwiththomas.com/blog/a-lua-c-api-cheat-sheet)
 
 1. Running a Lua script from file
 2. Running a Lua script from string
