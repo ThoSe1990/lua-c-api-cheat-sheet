@@ -24,11 +24,12 @@ void example_6_calling_c_function_from_lua()
     lua_pushcfunction(L, multiply_2_numbers);
     lua_setglobal(L, "multiply_2_numbers");
     
-    if (luaL_dofile(L, "./scripts/example_6_calling_c_function_from_lua.lua") == LUA_OK)
+    if (luaL_dofile(L, "./scripts/example_6_calling_c_function_from_lua.lua") == LUA_OK) {
         std::cout << "[C] Executed example_6_calling_c_function_from_lua.lua\n";
-    else 
+    } else {
         std::cout << "[C] Error reading script\n";
-
+        luaL_error(L, "Error: %s\n", lua_tostring(L, -1));
+    }
     lua_close(L);
 
     std::cout << '\n';

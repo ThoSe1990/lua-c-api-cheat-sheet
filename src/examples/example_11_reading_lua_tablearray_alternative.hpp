@@ -10,8 +10,7 @@ void example_11_reading_lua_tablearray_alternative()
     luaL_openlibs(L);
 
     
-    if (luaL_dofile(L, "./scripts/example_11_reading_lua_tablearray_alternative.lua") == LUA_OK) 
-    {
+    if (luaL_dofile(L, "./scripts/example_11_reading_lua_tablearray_alternative.lua") == LUA_OK) {
         std::cout << "[C] Executed example_11_reading_lua_tablearray_alternative.lua\n";
         lua_getglobal(L, "foo");
         if (lua_istable(L, -1)) 
@@ -40,9 +39,10 @@ void example_11_reading_lua_tablearray_alternative()
                             "[C] foo.foo_2.baz = " << baz << '\n' ;
             }
         }
-    }
-    else 
+    } else {
         std::cout << "[C] Error reading script\n";
+        luaL_error(L, "Error: %s\n", lua_tostring(L, -1));
+    }
 
     lua_close(L);
 

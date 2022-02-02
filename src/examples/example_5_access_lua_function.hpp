@@ -7,11 +7,9 @@ void example_5_access_lua_function()
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
 
-    if (luaL_dofile(L, "./scripts/example_5_access_lua_function.lua") == LUA_OK) 
-    {
+    if (luaL_dofile(L, "./scripts/example_5_access_lua_function.lua") == LUA_OK) {
         lua_getglobal(L, "add_2_numbers");
-        if (lua_isfunction(L, -1)) 
-        { 
+        if (lua_isfunction(L, -1)) { 
             lua_pushnumber(L, 55); // first function arg: one 
             lua_pushnumber(L, 17); // second function arg: two
 
@@ -22,13 +20,14 @@ void example_5_access_lua_function()
             lua_Number result = lua_tonumber(L, -1);
 
             std::cout << "[C] The result from Lua is: " << static_cast<int>(result) << '\n';
-        }
-        else 
+        } else { 
             std::cout << "[C] Error: didn't find a function on top of Lua stack\n";
-    }
-    else 
+        }
+    } else {
         std::cout << "[C] Error reading script\n";
-    
+        luaL_error(L, "Error: %s\n", lua_tostring(L, -1));
+    }
+
     lua_close(L);
     std::cout << '\n';
 

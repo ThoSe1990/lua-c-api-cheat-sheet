@@ -1,2 +1,2 @@
 
-print("[Lua] Can access foo Lua = " .. foo )
+print("[Lua] Can access bar Lua = " .. bar )

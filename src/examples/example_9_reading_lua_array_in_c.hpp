@@ -10,8 +10,7 @@ void example_9_reading_lua_array_in_c()
     luaL_openlibs(L);
 
     
-    if (luaL_dofile(L, "./scripts/example_9_reading_lua_array_in_c.lua") == LUA_OK) 
-    {
+    if (luaL_dofile(L, "./scripts/example_9_reading_lua_array_in_c.lua") == LUA_OK) {
         std::cout << "[C] Executed example_9_reading_lua_array_in_c.lua\n";
         lua_getglobal(L, "foo");
 
@@ -28,10 +27,10 @@ void example_9_reading_lua_array_in_c()
             "[C] foo[1] = " << first << '\n' <<
             "[C] foo[2] = " << second << '\n' <<
             "[C] foo[3] = " << third << '\n' ;
-    }
-    else 
+    } else {
         std::cout << "[C] Error reading script\n";
-
+        luaL_error(L, "Error: %s\n", lua_tostring(L, -1));
+    }
     lua_close(L);
 
     std::cout << '\n';

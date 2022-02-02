@@ -7,17 +7,18 @@ void example_4_passing_variable_to_lua()
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
 
-    int foo = 199;
-    std::cout << "[C] Declared foo = " << foo <<  '\n';
+    int bar = 199;
+    std::cout << "[C] Declared bar = " << bar <<  '\n';
 
-    lua_pushnumber(L, foo);
-    lua_setglobal(L, "foo");
+    lua_pushnumber(L, bar);
+    lua_setglobal(L, "bar");
     
-    if (luaL_dofile(L, "./scripts/example_4_passing_variable_to_lua.lua") == LUA_OK)
+    if (luaL_dofile(L, "./scripts/example_4_passing_variable_to_lua.lua") == LUA_OK) {
         std::cout << "[C] Executed example_4_passing_variable_to_lua.lua\n";
-    else 
+    } else {
         std::cout << "[C] Error reading script\n";
-
+        luaL_error(L, "Error: %s\n", lua_tostring(L, -1));
+    }
     lua_close(L);
 
     std::cout << '\n';

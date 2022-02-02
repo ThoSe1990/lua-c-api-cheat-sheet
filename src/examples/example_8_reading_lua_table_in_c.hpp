@@ -10,12 +10,10 @@ void example_8_reading_lua_table_in_c()
     luaL_openlibs(L);
 
     
-    if (luaL_dofile(L, "./scripts/example_8_reading_lua_table_in_c.lua") == LUA_OK) 
-    {
+    if (luaL_dofile(L, "./scripts/example_8_reading_lua_table_in_c.lua") == LUA_OK)  {
         std::cout << "[C] Executed example_8_reading_lua_table_in_c.lua\n";
         lua_getglobal(L, "foo");
-        if (lua_istable(L, -1)) 
-        {
+        if (lua_istable(L, -1))  {
             lua_getfield(L, -1, "foo_number");
             auto foo_number = lua_tonumber(L, -1);
             
@@ -33,10 +31,14 @@ void example_8_reading_lua_table_in_c()
                 "bar_number = " << bar_number << '\n' <<
                 "foo_string = " << foo_string << '\n' <<
                 "bar_string = " << bar_string << '\n';
+        } else {
+            std::cout << "[C] There's apparently no table on the stack top\n";
+            luaL_error(L, "Error: %s\n", lua_tostring(L, -1));
         }
-    }
-    else 
+    } else {
         std::cout << "[C] Error reading script\n";
+        luaL_error(L, "Error: %s\n", lua_tostring(L, -1));
+    }
 
     lua_close(L);
 
