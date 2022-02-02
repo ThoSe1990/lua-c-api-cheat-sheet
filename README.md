@@ -15,7 +15,7 @@ If you're writing own Lua bindings, this can be helpful. A Lua C API cheat sheet
 11. Reading a Lua table array in C (alternative)
 
   
-Run cmake to build:
+Run cmake to build the examples (target `lua-examples`) or the Lua interpreter itsself (target `lua`)
 ````
 cmake -S . -B ./build
 cmake --build ./build
