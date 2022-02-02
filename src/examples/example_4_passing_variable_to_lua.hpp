@@ -10,8 +10,8 @@ void example_4_passing_variable_to_lua()
     int bar = 199;
     std::cout << "[C] Declared bar = " << bar <<  '\n';
 
-    lua_pushnumber(L, bar);
-    lua_setglobal(L, "bar");
+    lua_pushnumber(L, bar); // push the number to the stack
+    lua_setglobal(L, "bar"); // assign a variable to it
     
     if (luaL_dofile(L, "./scripts/example_4_passing_variable_to_lua.lua") == LUA_OK) {
         std::cout << "[C] Executed example_4_passing_variable_to_lua.lua\n";
